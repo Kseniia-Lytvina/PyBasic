@@ -21,22 +21,16 @@ class User:
 
 class Purchase:
     def __init__(self, user):
-        self.products = {}  # Словник для товарів і їх кількості
+        self.products = {}
         self.user = user
 
     def add_item(self, item, cnt):
-        # Додаємо товар до замовлення, або оновлюємо кількість
-        if item in self.products:
-            self.products[item] += cnt
-        else:
-            self.products[item] = cnt
+        self.products[item] = cnt
 
     def get_total(self):
-        # Обчислення загальної вартості замовлення
         return sum(item.price * cnt for item, cnt in self.products.items())
 
     def __str__(self):
-        # Форматоване виведення інформації про замовлення
         items_str = "\n".join(
             [f"{item.name}: {cnt} pcs." for item, cnt in self.products.items()]
         )
@@ -68,14 +62,14 @@ assert isinstance(cart.user, User) is True, 'Екземпляр класу User'
 assert cart.get_total() == 60, "Всього 60"
 assert cart.get_total() == 60, 'Повинно залишатися 60!'
 
-# Додаємо товар до замовлення
 cart.add_item(apple, 10)
 print(cart)
 """
 User: Ivan Ivanov
 Items:
 lemon: 4 pcs.
-apple: 30 pcs.
+apple: 10 pcs.
 """
 
-assert cart.get_total() == 80, "Повинно бути 80!"
+assert cart.get_total() == 40, "Повинно бути 40!"
+
