@@ -18,6 +18,7 @@ else:
     result2=example2
 print(example2,"=>",result2)
 
+
 # Пример 3
 if len(example3) > 0:
     result3 = [example3[-1]] + example3[:-1]
