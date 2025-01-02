@@ -12,37 +12,30 @@ class Fraction:
         common_divisor = gcd(self.a, self.b)
         self.a //= common_divisor
         self.b //= common_divisor
+        return self
 
     def __add__(self, other):
         """Додавання дробів."""
         new_numerator = self.a * other.b + other.a * self.b
         new_denominator = self.b * other.b
-        result = Fraction(new_numerator, new_denominator)
-        result.simplify()
-        return result
+        return Fraction(new_numerator, new_denominator)
 
     def __sub__(self, other):
         """Віднімання дробів."""
         new_numerator = self.a * other.b - other.a * self.b
         new_denominator = self.b * other.b
-        result = Fraction(new_numerator, new_denominator)
-        result.simplify()
-        return result
+        return Fraction(new_numerator, new_denominator)
 
     def __mul__(self, other):
         """Множення дробів."""
         new_numerator = self.a * other.a
         new_denominator = self.b * other.b
-        result = Fraction(new_numerator, new_denominator)
-        result.simplify()
-        return result
+        return Fraction(new_numerator, new_denominator)
 
     def __eq__(self, other):
         """Порівняння дробів на рівність."""
-        self_simplified = Fraction(self.a, self.b)
-        self_simplified.simplify()
-        other_simplified = Fraction(other.a, other.b)
-        other_simplified.simplify()
+        self_simplified = Fraction(self.a, self.b).simplify()
+        other_simplified = Fraction(other.a, other.b).simplify()
         return self_simplified.a == other_simplified.a and self_simplified.b == other_simplified.b
 
     def __gt__(self, other):
